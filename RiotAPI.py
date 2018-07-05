@@ -20,13 +20,24 @@ class RiotAPI(object):
             ),
             params=args
             )
-        print (response.url)
+        # print (response.url)
         return response.json()
     
+    # Returns Summoner information
     def get_summoner_by_name(self, name):
         api_url = Consts.URL['summoner_by_name'].format(
             version=Consts.API_VERSIONS['summoner'],
             names=name
         )
         return self.request(api_url)
+    
+
+    def get_match_id(self, id):
+        api_url = Consts.URL['match_by_id'].format(
+            version=Consts.API_VERSIONS['summoner'],
+            match_id=id
+        )
+        return self.request(api_url)
+    
+
         
